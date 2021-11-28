@@ -8,9 +8,19 @@ This is a Python-based CLI application to connect to Zendesk, fetch tickets from
 
 Before using this application, please make sure you have created an account on Zendesk to use Zendesk APIs. Also, enable **Token Access** option in the API section and generate an API token. This token will be used by Zendesk authenticate you when you use Ticker-Viewer application to fetch tickets from your Zendesk account and view on CLI. 
 
-Steps to start using the Ticket-Viewer
+Things to set-up using the Ticket-Viewer
 1. Clone this repository using `git clone https://github.com/NIKHITH-SANNIDHI/Ticket-Viewer.git`
 2. Open credentials.json and please make the following modifications:
      1. Replace `<dummy-url>` with your Zendesk account URL. 
      2. Replace `<dummy-email>` with the primary email on you Zendesk account.
      3. Replace `<dummy-key>` with the API token that you've generated in the API section. 
+3. Ensure you have the following python packages installed on your system to run the Ticket-Viewer application:
+     1. requests
+     2. json
+     3. tabulate
+
+
+That's all! If you want to perform unit tests on the Ticket-Viewer python code, you need to use the test_ticket_viewer.py. Before running this file, please ensure you have the following python packages installed on your system:
+1. unittest
+2. requests_mock
+3. mock
