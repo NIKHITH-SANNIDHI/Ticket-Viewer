@@ -23,7 +23,7 @@ Things to set up using the Ticket-Viewer:
      3. tabulate (to display the data in a tabulated form)
 
 
-That's all! If you want to perform unit tests on the Ticket-Viewer python code, you need to use the `test_ticket_viewer.py`. I am using the unittest framework for testing my code. So, before running this file, please ensure you have the following `unittest` python package (for running unit tests) installed on your system.
+That's all! If you want to perform unit tests on the Ticket-Viewer python code, you need to use the `test_ticket_viewer.py`. I am using the unittest framework for testing my code. So, before running this file, please ensure you have the `unittest` python package (for running unit tests) installed on your system.
 
 ## Running the application locally
 Once the initial configuration is done, your system is now ready to run the Ticket-Viewer. To run the application, open a command prompt in the directory you cloned this repository and run the following command:\
