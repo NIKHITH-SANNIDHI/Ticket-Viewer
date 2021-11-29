@@ -47,6 +47,33 @@ This CLI application meets the requirements of the following features:
 Everytime the menu is displayed, the user always have a the option to quit the application by just typing 'quit'.
 
 
+## Application Design
+All the concerns related to the application are separated into just 3 files which enhances usability. The **credentials.json** is like a configuration file where the user will modify the secrets with their own's to make the application work for the user. The **ticket_viewer.py** is the main file that should run for the application to work. The code in this file is separated by various functions dealing with a specific concern (See code comments for more details). 
+I also considered the MVC approach for my project but since I am using command prompt to interact with the user (no need of UI logic), less data (around 100 tickets so no need of database), I believed developing a python file to run the application makes it very simple to understand and easy to run. 
+
+The program is designed such that every repitative concern is handled by specific function. Upon starting the code, the application greets you with a welcome message and gives you an option to proceed forward to the menu. The purpose of each function and API used (if applicable) is tabulated below. 
+
+| Function | Purpose | API used  |
+| ---- | ---- | ---- |
+| `display_all_tickets()` | Display all tickets in a list | `/api/v2/tickets/` |
+| `display_a_ticket()` | Display a ticket with ticket ID | `/api/v2/tickets/{ticket-id}` |
+| `display_25_tickets()` | Display 25 tickets at a time with paging option | `/api/v2/tickets?page[size]=25` |
+| `get_requested_data()` | Makes a GET API call for the given URL and returns json response | _Not Applicable_ |
+| `print_menu()` | Display menu options | _Not Applicable_ |
+| `get_creds()` | Load the credentials.json comprising of required secrets to connect to Zendesk | _Not Applicable_ |
+
+As the first three functions needs to make an GET API call, the program logic dealing with making GET calls and handling error responses are moved to `get_requested_data()`
+
+For handling the ticket data, I thought of two options:
+1. Make one GET all tickets API call, cache the data and display the data based on the user option.
+2. Make GET API calls without caching the data and display the response data in a tabulated form.
+
+I think the caching option looks great, especially when dealing with large amount of tickets. But our project deals with less tickets (100 tickets as given in the tickets.json). Keeping in mind of simplicity and the scale of this task, I believed that using the caching option for less tickets will be an memory overhead and making Zendesk API for every feature will be optimal. The response time is very quick as there are less tickets for this project. Hence, I decided to go with the second option. Fortunately, Zendesk offers APIs to satisfy the three main requirements (displaying all, one and 25 tickets with paging option) and I make the appropriate API call when user enters an option. As I am making the API call for every option, I need not store the ticket data at all. This eliminates the memory overhead of storing 100 tickets and also synchornization concerns if the data in Zendesk gets updated. So, the displayed data is always real-time and latest.
+
+
+The unit testing framework is implmented in a separate file that independantly tests the code in ticket_viewer.py. 
+
+
 ## Application Screenshots
 
 **Application output when user inputs option 1:**
