@@ -23,7 +23,7 @@ Things to set up using the Ticket-Viewer:
      3. tabulate (to display the data in a tabulated form)
 
 
-That's all! If you want to perform unit tests on the Ticket-Viewer python code, you need to use the test_ticket_viewer.py. I am using the unittest framework for testing my code. So, before running this file, please ensure you have the following `unittest` python package (for running unit tests) installed on your system.
+That's all! If you want to perform unit tests on the Ticket-Viewer python code, you need to use the `test_ticket_viewer.py`. I am using the unittest framework for testing my code. So, before running this file, please ensure you have the following `unittest` python package (for running unit tests) installed on your system.
 
 ## Running the application locally
 Once the initial configuration is done, your system is now ready to run the Ticket-Viewer. To run the application, open a command prompt in the directory you cloned this repository and run the following command:
@@ -32,6 +32,10 @@ Once the initial configuration is done, your system is now ready to run the Tick
 You will see a welcome message. Type 'menu' to continue and you will find various options to view your Zendesk tickets. A screenshot of the options are given below:
 
 ![image](https://user-images.githubusercontent.com/15651310/143792127-92a9ba63-56aa-4843-b041-e3705ff46dd3.png)
+
+## Testing 
+The `test_ticket_viewer.py` covers various unit tests to check the functionality of `ticket_viewer`. To run the tester code, open a command prompt in the directory you cloned this repository and run the following command:
+`python3 test_ticket_viewer.py`
 
 ## Application Features
 This CLI application meets the requirements of the following features:
@@ -56,6 +60,7 @@ The program is designed such that a specific function handles every repetitive c
 | `display_a_ticket()` | Display a ticket with ticket ID | `/api/v2/tickets/{ticket-id}` |
 | `display_25_tickets()` | Display 25 tickets at a time with paging option | `/api/v2/tickets?page[size]=25` |
 | `get_requested_data()` | Makes a GET API call for the given URL and returns json response | _Not Applicable_ |
+| `display_tabulated_format()` | Displays tickets in a tabulated form | _Not Applicable_ |
 | `print_menu()` | Display menu options | _Not Applicable_ |
 | `get_creds()` | Load the credentials.json comprising of required secrets to connect to Zendesk | _Not Applicable_ |
 
