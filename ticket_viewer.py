@@ -33,9 +33,7 @@ def get_requested_data(creds, api_url):
     user = creds['user']
     pwd = creds['auth_token']
 
-    print(api_url)
     response = requests.get(url, auth=(user, pwd))
-    print(response)
     data = response.json()
 
     #Handle error responses
@@ -59,9 +57,7 @@ def display_a_ticket(creds):
 #Display all ticket details in a list 
 def display_all_tickets(creds):
     try:
-        print(creds)
         data = get_requested_data(creds, "/api/v2/tickets")
-        print(data)
         display_tabulated_format(data['tickets'])
     except:
         return    
